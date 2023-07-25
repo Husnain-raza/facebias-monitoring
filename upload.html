@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+  <title>Upload your Model and Data</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <script>
+    function validateForm() {
+      var x = document.forms["uploadForm"]["model"].value;
+      if (x == "") {
+        alert("Model must be uploaded.");
+        return false;
+      }
+      if (!x.endsWith('.h5')) {
+        alert("Model must be a .h5 file.");
+        return false;
+      }
+
+      var y = document.forms["uploadForm"]["x_test"].value;
+      if (y == "") {
+        alert("x_test must be uploaded.");
+        return false;
+      }
+      if (!y.endsWith('.npy')) {
+        alert("x_test must be a .npy file.");
+        return false;
+      }
+
+      var z = document.forms["uploadForm"]["y_test"].value;
+      if (z == "") {
+        alert("y_test must be uploaded.");
+        return false;
+      }
+      if (!z.endsWith('.npy')) {
+        alert("y_test must be a .npy file.");
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <h1 class="text-center mt-5">Upload your Model and Data</h1>
+        <form name="uploadForm" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+          <div class="form-group">
+            <label for="model">Upload Model:</label>
+            <input type="file" id="model" name="model" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="x_test">Upload x_test:</label>
+            <input type="file" id="x_test" name="x_test" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="y_test">Upload y_test:</label>
+            <input type="file" id="y_test" name="y_test" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Upload</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
